@@ -3,6 +3,7 @@
 \usepackage{microtype}
 \usepackage{fontspec}
 \usepackage{geometry}
+\usepackage{mathtools}
 \usepackage[math-style=french,warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
 \setmainfont{TeX Gyre Termes}
 \setmathfont{TeX Gyre Termes Math}
@@ -15,6 +16,7 @@
 \usepackage{caption}
 \usetikzlibrary{calc,trees,positioning,arrows,fit,shapes,calc}
 \usepackage{lualatex-math}
+\usepackage{crossreftools}
 \usepackage[unicode,naturalnames]{hyperref}
 \usepackage{cleveref}
 \AtBeginDocument{\let\savedemptyset\emptyset} % 
@@ -28,7 +30,7 @@
 \newcommand*{\theauthor}{\@author}
 \newcommand*{\thetitle}{\@title}
 \newcommand*{\thedate}{\@date}
-\newcommand{\xmapsto}[2][]{\mathrel{\mathpalette\xmapsto@{{#1}{#2}}}}
+\renewcommand{\xmapsto}[2][]{\mathrel{\mathpalette\xmapsto@{{#1}{#2}}}}
 \newcommand{\xmapsto@}[2]{\xmapsto@@{#1}#2}
 \newcommand{\xmapsto@@}[3]{%
   \begingroup
