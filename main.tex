@@ -19,20 +19,20 @@
 	Sans perte de généralité, on démontre la propriété dans le cas de 3 points du plan affine. Soient $a,b,c$ trois réels, tels que $a+b\neq 0,\ a+b+c\neq 0$; $A$, $B$, $C$, trois points de l'espace. On consdière le système pondéré~$\left\lbrace(A,a),(B,b),(C,c)\right\rbrace$.
 On appelle alors $G$ le barycentre de $A$, $B$, $C$; $A'$, celui de $A$~et~$B$ dans ce système, tous deux bien définis d'après ce qui précède.
 
-On veut démontrer que  
+\noindent On veut démontrer l'équivalence :   
 \begin{align*}
-\Aboxed{G=\Bary\left\lbrace(A,a),(B,b),(C,c)\right\rbrace\iff & G=\Bary\left\lbrace(A,a),(A',b+c)\right\rbrace}
+\Aboxed{G=\Bary\left\lbrace(A,a),(B,b),(C,c)\right\rbrace\iff & G=\Bary\left\lbrace(A',a+b),(C,c)\right\rbrace}
 \intertext{par définition de $A'$, on a : }
 a\overrightarrow{A'A}+b\overrightarrow{A'B}& =\vec{0}\\
 \intertext{par définition de $G$, on a : }
 a\,\overrightarrow{GA}+b\,\overrightarrow{GB}+c\overrightarrow{GC}& =\vec{0}\\
-\intertext{On cherche à introduire $A'\!$. D'après Chasles, on a :}
+\intertext{On cherche à introduire $A'$}
 a\left(\overrightarrow{GA'}+\overrightarrow{A'A}\right)+b\left(\overrightarrow{GA'}+\overrightarrow{A'B}\right)+c\overrightarrow{GC}& =\vec{0}\\
 \shortintertext{soit, après factorisation : }
 (a+b)\overrightarrow{GA'}+\underbrace{a\overrightarrow{A'A}+b\overrightarrow{A'B}}_{\,=\,\vec{0}\text{ par définition de }A'}+c\overrightarrow{GC}& =\vec{0}\\
 \shortintertext{On a donc obtenu :}
 \Aboxed{(a+b)\overrightarrow{GA'}+c\overrightarrow{GC}& =\vec{0}}
 \end{align*}
-Et G est le barycentre de $\left\lbrace(A,a),(A',a+b)\right\rbrace$.
+Et G est le barycentre de $\left\lbrace(A',a+b),(C,c)\right\rbrace$, par unicité.
 \end{proof}
 \end{document}
