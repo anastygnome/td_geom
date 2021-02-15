@@ -1,6 +1,16 @@
+\usepackage{cancel}
+\usepackage{enumitem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   THEOREMES SANS BOITES   %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\newtheoremstyle{exo}%
+  {\item[\rlap{\vbox{\hbox{\hskip\labelsep \theorem@headerfont
+          ##1\ ##2\theorem@separator}\hbox{\strut}}}]}%
+  {\item[\rlap{\vbox{\hbox{\hskip\labelsep \theorem@headerfont
+%           ##1\ ##2\ (##3)\theorem@separator}\hbox{\strut}}}]}
+          ##1\ ##2\ \textnormal{--}\ ##3\theorem@separator}\hbox{\strut}\addvspace{\parskip}}}]}
+\makeatother
 \theoremstyle{break}
 \theoremseparator{~:} % espace fine insécable avant le :
 \newtheorem{lemma}{Lemme}
@@ -8,6 +18,8 @@
 \newtheorem{definition}{Définition}
 \theoremseparator{~:} % espace fine insécable avant le :
 \theorembodyfont{\normalfont}
+\theoremstyle{exo}
+\theoremseparator{} % espace fine insécable avant le :
 \newtheorem{exercise}{Exercice}[chapter]
 \theoremstyle{plain}
 \theorembodyfont{\normalfont}
@@ -76,14 +88,15 @@ colbacktitle=white!80!vert,colback=white!90!vert,label type=note}{note}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\HRule}{\rule{\paperwidth}{0.5mm}} % trait, régler eppaisseur
 \newcommand*{\theuniversity}{Université de Toulon}
-\newcommand*{\theyearname}{Licence de Mathématiques, parcours mathématiques, 
-2\ieme~année}
+\newcommand*{\theyearname}{Licence de Mathématiques, parcours mathématiques, 2\ieme~année}
 \newcommand*{\thesupervisor}{Cours dispensés par Joachim \bsc{Asch} \par Travaux dirigés assurés par Stéphane \bsc{Leblanc}}
-\author{Tom \bsc{Domenge}}
-\title{Travaux dirigés de géométrie\par Recueil des exercices corrigés\par Année universitaire 2020-21}
-
+\AtBeginDocument{\author{Tom \bsc{Domenge}}}
+\AtBeginDocument{\title{Devoir Maison de géométrie\par \theyearname \par Année universitaire 2020-21}}
+\AtBeginDocument{\date{\`A rendre pour le 12 février 2021}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Opérateurs (dans le style de max etc.   %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \DeclareMathOperator{\Card}{Card} % s'utilise avec \Card en mode maths
 \DeclareMathOperator{\Bary}{bar}
+\newcommand*{\numbereq}{\stepcounter{equation}\tag{\theequation}}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}

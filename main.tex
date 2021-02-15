@@ -2,37 +2,77 @@
 \input{backend_code/preambule}
 %\input{backend_code/bibliographie}
 \input{personalisation}
-\begin{document}
-\begin{titlingpage}
-\input{backend_code/page_de_garde}
-\end{titlingpage}
-\frontmatter
-%\tableofcontents
-\mainmatter
-\addtocounter{chapter}{2}
-\addtocounter{exercise}{2}
-\begin{exercise}
-\'Enoncez et démontrez la propriété d'associativité du barycentre.
-\end{exercise}
- 
-\begin{proof}
-	Sans perte de généralité, on démontre la propriété dans le cas de 3 points du plan affine. Soient $a,b,c$ trois réels, tels que $a+b\neq 0,\ a+b+c\neq 0$; $A$, $B$, $C$, trois points de l'espace. On consdière le système pondéré~$\left\lbrace(A,a),(B,b),(C,c)\right\rbrace$.
-On appelle alors $G$ le barycentre de $A$, $B$, $C$; $A'$, celui de $A$~et~$B$ dans ce système, tous deux bien définis d'après ce qui précède.
 
-\noindent On veut démontrer l'équivalence :   
-\begin{align*}
-\Aboxed{G=\Bary\left\lbrace(A,a),(B,b),(C,c)\right\rbrace\iff & G=\Bary\left\lbrace(A',a+b),(C,c)\right\rbrace}
-\intertext{par définition de $A'$, on a : }
-\iff a\overrightarrow{A'A}+b\overrightarrow{A'B}& =\vec{0}\\
-\intertext{par définition de $G$, on a : }
- a\,\overrightarrow{GA}+b\,\overrightarrow{GB}+c\overrightarrow{GC}& =\vec{0}\\
-\intertext{On cherche à introduire $A'\!\!$. D'après la relation de Chasles, on obtient :}
- \iff a\left(\overrightarrow{GA'}+\overrightarrow{A'A}\right)+b\left(\overrightarrow{GA'}+\overrightarrow{A'B}\right)+c\overrightarrow{GC}& =\vec{0}\\
-\intertext{soit, après regroupement des termes pour faire apparaître le barycentre de A et B : }
-\iff (a+b)\overrightarrow{GA'}+\underbrace{a\overrightarrow{A'A}+b\overrightarrow{A'B}}_{\,=\,\vec{0}\text{ par définition de }A'}+\,c\overrightarrow{GC}& =\vec{0}\\
-\shortintertext{On a donc obtenu :}
-\iff\;\Aboxed{(a+b)\overrightarrow{GA'}+c\overrightarrow{GC}& =\vec{0}}
-\end{align*}
-Et G est le barycentre de $\left\lbrace(A',a+b),(C,c)\right\rbrace$, par définition. 
+\begin{document}
+\maketitle
+%\tableofcontents
+\addtocounter{chapter}{2}
+\addtocounter{exercise}{7}
+\begin{exercise}[Résultat]\label{ex:barymat}
+Soit ABC un triangle \emph{non-dégénéré} de l'espace affine $\mathbf{R}^3$.
+
+\noindent Soient encore 3 points de $R^3$, ${P_1=(t_1,t_2,t_3),P_2=(u_1,u_2,u_3), P_3=(v_1,v_2,v_3)}$,
+où les coordonées sont exprimées dans le repère barycentrique $(A,B,C)$, et de somme égale à 1. On a~:
+\[\boxed{\text{$P_1,P_2~\&~ P_3$ sont alignés} \iff \begin{vmatrix}
+  t_1 & t_2 & t_3 \\ u_1 & u_2 & u_3 \\ v_1 & v_2 & v_3
+\end{vmatrix}=0}\] 
+\end{exercise}
+\begin{exercise}[Résultat]\label{ex:baryfrac}
+Soient A et B deux points du plan. Soit aussi deux réels $\alpha$ et $\beta$ tels que $\alpha+\beta=1$. 
+
+\noindent Soit alors $G=\Bary\{(A,\alpha),(B,\beta)\}$. 
+On a~: 
+\[\boxed{\alpha=\frac{\overline{GB}}{\overline{AB}}~\&~\beta=\frac{\overline{GA}}{\overline{BA}}}\]
+\end{exercise}
+\begin{exercise}[Théorème de Ménélaüs]
+Soit $ABC$ un triangle  \emph{non-dégénéré} et $A',B',C'$ trois points distincts des sommets tels que~: \[A' \in (BC),B'\in (CA), C' \in (AB)\]
+
+\noindent Montrer que ces points sont alignés si et selement si~: 
+\[\frac{\overline{A'B}}{\overline{A'C}}\frac{\overline{B'C}}{\overline{B'A}}\frac{\overline{C'A}}{\overline{C'B}}=1\]
+\end{exercise}
+\begin{proof}
+Tout d'abord, comme ABC est non-dégénéré, ses sommets forment un repère barycentrique du plan;Les hypothèses d'appartenance ci-dessus donnent donc l'existence de coefficients $\left(\alpha_i\right)_{i \in \left\lbrace A',B',C'\right\rbrace},\left(\beta_i\right)_{i \in \left\lbrace A',B',C'\right\rbrace},\left(\gamma_i\right)_{i \in \left\lbrace A',B',C'\right\rbrace}$ tels que, les hypothèses de  l' \cref{ex:barymat} soient vérifiées et : 
+\[\begin{vmatrix}
+  0& \beta_{A'}& \gamma_{A'}\\
+  \alpha_{B'} &0& \gamma_{B'}\\
+    \alpha_{C'}& \beta_{C'}& 0
+\end{vmatrix}=0\]
+En développant par rapport à la première colonne, il vient :
+\[\alpha_{B'}\beta_{C'}\gamma_{A'}+\gamma_{B'}\alpha_{C'}\beta_{A'}=0\]
+C'est-à-dire : 
+\[\alpha_{B'}\beta_{C'}\gamma_{A'}= -\left(\gamma_{B'}\alpha_{C'}\beta_{A'}\right)\]
+Mais d'après l'\cref{ex:baryfrac}, on a ~:
+\[\frac{\overline{A'B}}{\overline{A'C}}=-\frac{\gamma_{A'}}{\beta_{A'}}\]
+En appliquant plusieurs fois, on obtient : 
+\[\boxed{\frac{\overline{A'B}}{\overline{A'C}}\frac{\overline{B'C}}{\overline{B'A}}\frac{\overline{C'A}}{\overline{C'B}}=\cancel{-}\frac{\cancel{\gamma_{A'}}}{\cancel{\beta_{A'}}}\frac{\cancel{\alpha_{B'}}}{\cancel{\gamma_{A'}}}\left(\cancel{-}\frac{\cancel{\beta_{A'}}}{\cancel{\alpha_{B'}}}\right)=1}\]
 \end{proof}
+\begin{exercise} [Fonction de \bsc{Leibnitz}]
+Soient $(A_j,\lambda_j)_{j \in \left\lBrack 1;n \right\rBrack}$ des points massiques de l'espace euclidien $\mathbb{E}=\mathbb{R}^3$. On définit une application $f~:~\mathbb{E} \to \mathbb{R}$ par $M \mapsto f(M)=\sum_{j=1}^n \lambda_j\norm*{\overrightarrow{MA_j}}^2$ 
+\begin{enumerate}
+  \item Si $\sum_{i=1}^n \lambda_i=0$, montrer que $\exists V \in \mathbb{E},\forall (M,M')\in \mathbb{E}^2\!,\/ f(M)=f(M')+2\overrightarrow{MM'}\cdot \overrightarrow{V}$. On exprimera $\overrightarrow{V}\!$. 
+  \item Si $\sum_{i=1}^n \lambda_i\neq 0$, montrer que~: $$ f(M)=\sum_{j=1}^n \lambda_j\norm*{\overrightarrow{GA_j}}^2+\sum_{j=1}^n \lambda_j\norm*{\overrightarrow{MG}}^2,$$ où $(G, \sum_{i=1}^n \lambda_i)$ est le barycentre des points $(A_j,\lambda_j)_{j \in \left\lBrack 1;n \right\rBrack}$
+\end{enumerate}
+\end{exercise}
+Pour simplifier la composition, on notera aussi $\left\langle u\,;v\right\rangle$ au lieu de $u\cdot v$. On rappelle l'identité du carré scalaire : $$\boxed{\forall (\overrightarrow{AB};\overrightarrow{CD})\in \overrightarrow{\mathbb{E}}^2, \norm*{\overrightarrow{AB}+\overrightarrow{CD}}^2\eqdef \left\langle\overrightarrow{AB}+\overrightarrow{CD}\,;\overrightarrow{AB}+\overrightarrow{CD}\right\rangle=\norm*{\overrightarrow{AB}}^2+\norm*{\overrightarrow{CD}}^2+2\left\langle\overrightarrow{AB}\,;\overrightarrow{CD}\right\rangle}$$
+\begin{enumerate}
+  \item D'après l'énoncé et la relation de Chasles, on a : 
+  \[\overrightarrow{MA_j} =\overrightarrow{MM'}+\overrightarrow{M'A_j}\]
+Ainsi, en réinjectant dans $f$, on obtient~:
+\begin{align*}
+f(M)& =\sum_{j=1}^n \lambda_j\norm*{\overrightarrow{MM'}+\overrightarrow{M'A_j}}^2\\ 
+& =\sum_{j=1}^n \lambda_j\left( \norm*{\overrightarrow{MM'}}^2+\norm*{\overrightarrow{M'A_j}}^2+2\left\langle\overrightarrow{MM'}\,;\overrightarrow{M'A_j}\right\rangle\right)\\  
+& =\underbrace{\sum_{j=1}^n \lambda_j\norm*{\overrightarrow{M'A_j}}^2}_{f(M')}+\left\langle 2 \overrightarrow{MM'}\,;\sum_{j=1}^n\overrightarrow{M'A_j}\right\rangle +\underbrace{\sum_{j=1}^n \lambda_j \norm*{\overrightarrow{M'M}}^2}_{\vec{0} \text{ car }\sum_{i=1}^n \lambda_i=0}\numbereq \label{eq:exprf}\\
+\intertext{ le vecteur $V=\sum_{j=1}^n\overrightarrow{M'A_j}$ est constant par rapport à M et à $i$, d'où~:}
+\Aboxed{& \forall (M,M') \in \mathbb{E}^2, f(M)=f(M')+2\overrightarrow{MM'}\cdot \overrightarrow{V}}\tag*{\bsc{c.q.f.d}}
+\intertext{\item Si on suppose $\sum_{i=1}^n \lambda_i \neq 0$, Alors le point G barycentre des point (cf énoncé) est bien défini. En reprenant l'\cref{eq:exprf},en posant $M'=G\in \mathbb{E}$ on obtient} 
+f(M)& =f(G)+\left\langle 2 \overrightarrow{MM'}\,;\underbrace{\sum_{j=1}^n\overrightarrow{GA_j}}_{\vec{0} \text{ par déf. de G.}}\right\rangle +\sum_{j=1}^n \lambda_j \norm*{\overrightarrow{GM}}^2
+\shortintertext{Soit :}
+\Aboxed{& f(M)=f(G)+\sum_{j=1}^n \lambda_j \norm*{\overrightarrow{GM}}^2}
+ \end{align*}
+ \item Par manque de temps, esquisses de réponses.
+ \begin{enumerate} [label=(\alph*)]
+   \item $\lambda_A$ et $\lambda_B$ sont les coefficients tels que C soit barycentre de A et de B, c'est-à-dire les coordonées barycentriques de C dans $(A;B)$.
+   \item Il suffit d'utiliser le point précédent, et de réarranger la somme, en utilisant l'\cref{ex:baryfrac}.
+ \end{enumerate}
+  \end{enumerate}
 \end{document}
